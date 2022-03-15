@@ -1,0 +1,16 @@
+{
+  "name": "readabletime",
+  "version": "1.0.0",
+  "description": "Human Friendly clock",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Osaretin Igbinobaro",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.0.0",
+    "express": "^4.17.3",
+    "jest": "^27.5.1"
+  }
+}
