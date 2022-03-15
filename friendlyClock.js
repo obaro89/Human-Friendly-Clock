@@ -20,9 +20,19 @@ class FriendlyClock {
   }
 
   //convert the time digits to readable text
-  readTimeToText() {
-    //destructure the hour and minute keys from the object returned from getCurrentTime method
-    let { hour, minute } = this.getCurrentTime();
+  readTimeToText(inputtime = false) {
+    let hour;
+    let minute;
+    //check if user inputed time value
+    if (inputtime) {
+      //split the inputed time to get the hour and minute
+      hour = parseInt(inputtime.split(":")[0]);
+      minute = parseInt(inputtime.split(":")[1]);
+    } else {
+      //get the hour and minute keys from the object returned from getCurrentTime method
+      hour = this.getCurrentTime().hour;
+      minute = this.getCurrentTime().minute;
+    }
 
     //changing time to 12hr format
     hour = this.timeToHourClock(hour);
@@ -35,7 +45,7 @@ class FriendlyClock {
       command = `Half past ${this.cardinals[hour].toLowerCase()}`;
     } else if (minute > 30) {
       command = `${this.cardinals[60 - minute]} to ${this.cardinals[
-        hour + 1
+        this.timeToHourClock(hour + 1)
       ].toLowerCase()}`;
     } else {
       command = `${this.cardinals[minute]} past ${this.cardinals[
