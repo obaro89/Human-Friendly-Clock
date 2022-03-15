@@ -20,14 +20,38 @@ class FriendlyClock {
   }
 
   //convert the time digits to readable text
-  readTimeToText(inputtime = false) {
+  readTimeToText(inputTime = false) {
     let hour;
     let minute;
-    //check if user inputed time value
-    if (inputtime) {
+    //check if user inputed a time value
+    if (inputTime) {
+      //split the value to validate
+      const [h, m] = inputTime.split(":");
+
+      //if the split was successful, then variable b would be available
+
+      if (!m) {
+        return "Hour and Minute should be separated by a colon (:)";
+      }
+
       //split the inputed time to get the hour and minute
-      hour = parseInt(inputtime.split(":")[0]);
-      minute = parseInt(inputtime.split(":")[1]);
+      //check if hour and minute are valid numbers
+
+      if (!parseInt(h)) return "Invalid Input";
+      if (!parseInt(m)) return "Invalid Input";
+
+      //if validation is successful, the code is executed to this point
+      hour = parseInt(h);
+      minute = parseInt(m);
+
+      //check if the hour and/or minute are out of range
+
+      if (hour > 23) return "Hour should not be greater than 23";
+      if (minute > 59) return "Minute should not be greater than 59";
+
+      //check if the hour or minute is negative
+
+      if (hour < 0 || minute < 0) return "Time cannot be negative";
     } else {
       //get the hour and minute keys from the object returned from getCurrentTime method
       hour = this.getCurrentTime().hour;
