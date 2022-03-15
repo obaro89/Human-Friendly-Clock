@@ -16,7 +16,10 @@ class FriendlyClock {
   //convert time to 12hr convention
   timeToHourClock(hour) {
     hour = hour > 12 ? hour - 12 : hour;
-    return hour;
+    if (hour == 0) {
+      hour = 12;
+    }
+    return Math.abs(hour);
   }
 
   //convert the time digits to readable text
@@ -37,8 +40,8 @@ class FriendlyClock {
       //split the inputed time to get the hour and minute
       //check if hour and minute are valid numbers
 
-      if (!parseInt(h)) return "Invalid Input";
-      if (!parseInt(m)) return "Invalid Input";
+      if (isNaN(h)) return "Invalid Input";
+      if (isNaN(m)) return "Invalid Input";
 
       //if validation is successful, the code is executed to this point
       hour = parseInt(h);
