@@ -1,4 +1,6 @@
 const FriendlyClock = require("../friendlyClock");
+const request = require("supertest");
+const app = require("../server");
 
 const clock = new FriendlyClock();
 
@@ -74,5 +76,16 @@ describe("Test the range of the inputs", () => {
     expect(clock.readTimeToText("-4:50")).toEqual("Time cannot be negative");
 
     expect(clock.readTimeToText("4:-30")).toEqual("Time cannot be negative");
+  });
+});
+
+//Test for REST API service
+describe("REST API service test", () => {
+  test("In a simple GET request", async () => {
+    const response = await request(app)
+      .get("/friendlytime")
+      .set("Accept", "application/json");
+    expect(response.status).toEqual(200);
+    expect(JSON.stringify(response.body)).toMatch(/humanFriendlyText/);
   });
 });
