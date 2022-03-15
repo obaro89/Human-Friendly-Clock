@@ -1,8 +1,10 @@
 {
-  "name": "readabletime",
+  "name": "friendlytime",
   "version": "1.0.0",
   "description": "Human Friendly clock",
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": "./index.js",
   "scripts": {
     "test": "jest"
   },
