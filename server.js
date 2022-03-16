@@ -37,6 +37,13 @@ app.get("/friendlytime/:time?", (req, res) => {
   }
 });
 
+//for deployment to heroku
+if (process.env.NODE_ENV === "production") {
+  app.get("/", (req, res) => {
+    res.send("");
+  });
+}
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

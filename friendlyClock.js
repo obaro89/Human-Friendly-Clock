@@ -31,7 +31,7 @@ class FriendlyClock {
       //split the value to validate
       const [h, m] = inputTime.split(":");
 
-      //if the split was successful, then variable b would be available
+      //if the split was successful, then variable m would be available
 
       if (!m) {
         return "Hour and Minute should be separated by a colon (:)";
