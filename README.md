@@ -5,6 +5,14 @@ This is a program that converts time to a friendly human readable format.
 
 
 
+## The REST Service Demo
+This program is hosted at heroku
+
+https://friendlytime.herokuapp.com/
+
+
+
+
 ## API Reference
 
 #### To return the time (in a friendly time format) the API was called
